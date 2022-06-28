@@ -6975,7 +6975,7 @@
        "valType": "any"
       },
       "xref": {
-       "description": "Sets the shape's x coordinate axis. If set to a x axis id (e.g. *x* or *x2*), the `x` position refers to a x coordinate. If set to *paper*, the `x` position refers to the distance from the left of the plotting area in normalized coordinates where *0* (*1*) corresponds to the left (right). If set to a x axis ID followed by *domain* (separated by a space), the position behaves like for *paper*, but refers to the distance in fractions of the domain length from the left of the domain of that axis: e.g., *x2 domain* refers to the domain of the second x  axis and a x position of 0.5 refers to the point between the left and the right of the domain of the second x axis. If the axis `type` is *log*, then you must take the log of your desired range. If the axis `type` is *date*, then you must convert the date to unix time in milliseconds.",
+       "description": "Sets the shape's x coordinate axis. If set to a x axis id (e.g. *x* or *x2*), the `x` position refers to a x coordinate. If set to *paper*, the `x` position refers to the distance from the left of the plotting area in normalized coordinates where *0* (*1*) corresponds to the left (right). If set to a x axis ID followed by *domain* (separated by a space), the position behaves like for *paper*, but refers to the distance in fractions of the domain length from the left of the domain of that axis: e.g., *x2 domain* refers to the domain of the second x  axis and a x position of 0.5 refers to the point between the left and the right of the domain of the second x axis.",
        "editType": "calc",
        "valType": "enumerated",
        "values": [
@@ -7009,7 +7009,7 @@
        "valType": "any"
       },
       "yref": {
-       "description": "Sets the annotation's y coordinate axis. If set to a y axis id (e.g. *y* or *y2*), the `y` position refers to a y coordinate. If set to *paper*, the `y` position refers to the distance from the bottom of the plotting area in normalized coordinates where *0* (*1*) corresponds to the bottom (top). If set to a y axis ID followed by *domain* (separated by a space), the position behaves like for *paper*, but refers to the distance in fractions of the domain length from the bottom of the domain of that axis: e.g., *y2 domain* refers to the domain of the second y  axis and a y position of 0.5 refers to the point between the bottom and the top of the domain of the second y axis.",
+       "description": "Sets the shape's y coordinate axis. If set to a y axis id (e.g. *y* or *y2*), the `y` position refers to a y coordinate. If set to *paper*, the `y` position refers to the distance from the bottom of the plotting area in normalized coordinates where *0* (*1*) corresponds to the bottom (top). If set to a y axis ID followed by *domain* (separated by a space), the position behaves like for *paper*, but refers to the distance in fractions of the domain length from the bottom of the domain of that axis: e.g., *y2 domain* refers to the domain of the second y  axis and a y position of 0.5 refers to the point between the bottom and the top of the domain of the second y axis.",
        "editType": "calc",
        "valType": "enumerated",
        "values": [
@@ -9717,7 +9717,19 @@
      "description": "Determines whether long tick labels automatically grow the figure margins.",
      "dflt": false,
      "editType": "ticks",
-     "valType": "boolean"
+     "extras": [
+      true,
+      false
+     ],
+     "flags": [
+      "height",
+      "width",
+      "left",
+      "right",
+      "top",
+      "bottom"
+     ],
+     "valType": "flaglist"
     },
     "autorange": {
      "description": "Determines whether or not the range of this axis is computed in relation to the input data. See `rangemode` for more info. If `range` is provided, then `autorange` is set to *false*.",
@@ -10956,7 +10968,19 @@
      "description": "Determines whether long tick labels automatically grow the figure margins.",
      "dflt": false,
      "editType": "ticks",
-     "valType": "boolean"
+     "extras": [
+      true,
+      false
+     ],
+     "flags": [
+      "height",
+      "width",
+      "left",
+      "right",
+      "top",
+      "bottom"
+     ],
+     "valType": "flaglist"
     },
     "autorange": {
      "description": "Determines whether or not the range of this axis is computed in relation to the input data. See `rangemode` for more info. If `range` is provided, then `autorange` is set to *false*.",
@@ -15905,7 +15929,7 @@
      "valType": "string"
     },
     "quartilemethod": {
-     "description": "Sets the method used to compute the sample's Q1 and Q3 quartiles. The *linear* method uses the 25th percentile for Q1 and 75th percentile for Q3 as computed using method #10 (listed on http://www.amstat.org/publications/jse/v14n3/langford.html). The *exclusive* method uses the median to divide the ordered dataset into two halves if the sample is odd, it does not include the median in either half - Q1 is then the median of the lower half and Q3 the median of the upper half. The *inclusive* method also uses the median to divide the ordered dataset into two halves but if the sample is odd, it includes the median in both halves - Q1 is then the median of the lower half and Q3 the median of the upper half.",
+     "description": "Sets the method used to compute the sample's Q1 and Q3 quartiles. The *linear* method uses the 25th percentile for Q1 and 75th percentile for Q3 as computed using method #10 (listed on http://jse.amstat.org/v14n3/langford.html). The *exclusive* method uses the median to divide the ordered dataset into two halves if the sample is odd, it does not include the median in either half - Q1 is then the median of the lower half and Q3 the median of the upper half. The *inclusive* method also uses the median to divide the ordered dataset into two halves but if the sample is odd, it includes the median in both halves - Q1 is then the median of the lower half and Q3 the median of the upper half.",
      "dflt": "linear",
      "editType": "calc",
      "valType": "enumerated",
@@ -40330,6 +40354,28 @@
      "description": "Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.",
      "editType": "none",
      "valType": "any"
+    },
+    "unselected": {
+     "editType": "plot",
+     "line": {
+      "color": {
+       "description": "Sets the base color of unselected lines. in connection with `unselected.line.opacity`.",
+       "dflt": "#777",
+       "editType": "plot",
+       "valType": "color"
+      },
+      "editType": "plot",
+      "opacity": {
+       "description": "Sets the opacity of unselected lines. The default *auto* decreases the opacity smoothly as the number of lines increases. Use *1* to achieve exact `unselected.line.color`.",
+       "dflt": "auto",
+       "editType": "plot",
+       "max": 1,
+       "min": 0,
+       "valType": "number"
+      },
+      "role": "object"
+     },
+     "role": "object"
     },
     "visible": {
      "description": "Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).",
@@ -69493,6 +69539,17 @@
       "outliers",
       "suspectedoutliers",
       false
+     ]
+    },
+    "quartilemethod": {
+     "description": "Sets the method used to compute the sample's Q1 and Q3 quartiles. The *linear* method uses the 25th percentile for Q1 and 75th percentile for Q3 as computed using method #10 (listed on http://jse.amstat.org/v14n3/langford.html). The *exclusive* method uses the median to divide the ordered dataset into two halves if the sample is odd, it does not include the median in either half - Q1 is then the median of the lower half and Q3 the median of the upper half. The *inclusive* method also uses the median to divide the ordered dataset into two halves but if the sample is odd, it includes the median in both halves - Q1 is then the median of the lower half and Q3 the median of the upper half.",
+     "dflt": "linear",
+     "editType": "calc",
+     "valType": "enumerated",
+     "values": [
+      "linear",
+      "exclusive",
+      "inclusive"
      ]
     },
     "scalegroup": {
