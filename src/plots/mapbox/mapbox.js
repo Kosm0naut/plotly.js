@@ -92,8 +92,7 @@ proto.createMap = function(calcData, fullLayout, resolve, reject) {
     // store access token associated with this map
     self.accessToken = opts.accesstoken;
 
-    // create the map!
-    var map = self.map = new mapboxgl.Map({
+    var options = Object.assign({}, {
         container: self.div,
 
         style: styleObj.style,
@@ -109,7 +108,11 @@ proto.createMap = function(calcData, fullLayout, resolve, reject) {
         boxZoom: false,
 
         attributionControl: false
-    })
+        
+    }, opts)
+
+    // create the map!
+    var map = self.map = new mapboxgl.Map(options)
     .addControl(new mapboxgl.AttributionControl({
         compact: true
     }));
