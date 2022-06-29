@@ -86,6 +86,12 @@ proto.createMap = function(calcData, fullLayout, resolve, reject) {
     var self = this;
     var opts = fullLayout[self.id];
 
+    var extraOpts = {}
+    
+    if (opts._input) {
+        extraOpts = opts._input.mapboxOptions || {}
+    }
+
     // store style id and URL or object
     var styleObj = self.styleObj = getStyleObj(opts.style);
 
@@ -109,7 +115,7 @@ proto.createMap = function(calcData, fullLayout, resolve, reject) {
 
         attributionControl: false
         
-    }, opts)
+    }, extraOpts)
 
     // create the map!
     var map = self.map = new mapboxgl.Map(options)
